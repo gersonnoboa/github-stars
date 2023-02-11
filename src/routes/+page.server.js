@@ -27,7 +27,7 @@ function formatRepositories(repositories) {
 			order: i + 1,
 			name: element.full_name,
 			url: element.html_url,
-			description: element.description,
+			description: formatDescription(element.description),
 			stars: element.stargazers_count,
 			language: element.language
 		}
@@ -36,4 +36,16 @@ function formatRepositories(repositories) {
 	});
 
 	return formattedRepositories;
+}
+
+function formatDescription(description) {
+	const maximumCharacters = 120;
+
+	if (typeof (description) !== 'string') {
+		return ""
+	}
+
+	if (description.length <= maximumCharacters) { return description; }
+
+	return description.slice(0, maximumCharacters - 3) + "..."
 }
