@@ -10,10 +10,6 @@
 	/**
 	 * @type {string}
 	 */
-	export let author;
-	/**
-	 * @type {string}
-	 */
 	export let url;
 	/**
 	 * @type {string}
@@ -29,19 +25,20 @@
 	export let language;
 </script>
 
-<div class="card bg-base-200 shadow-xl">
+<div class="card bg-base-300 shadow-md card-compact">
 	<div class="card-body">
-		<h2 class="card-title">{order}. {name}</h2>
-		<p>By {author}</p>
+		<h2 class="font-semibold text-base">
+			<span class="badge badge-primary">{order}</span>
+			<a class="link" href={url}>{name}</a>
+		</h2>
 		<p>{description}</p>
-		<p>
-			<span class="badge badge-neutral badge-md p-4 gap-4">{stars} stars</span>
-			{#if language != null}
-				<span class="badge badge-neutral badge-md p-4 gap-4">{language}</span>
-			{/if}
-		</p>
 		<div class="card-actions justify-end">
-			<a role="button" class="btn btn-primary" href={url}>GO</a>
+			<p>
+				<span class="badge badge-neutral badge-md p-4 gap-4">{stars} stars</span>
+				{#if language != null}
+					<span class="badge badge-neutral badge-md p-4 gap-4">{language}</span>
+				{/if}
+			</p>
 		</div>
 	</div>
 </div>

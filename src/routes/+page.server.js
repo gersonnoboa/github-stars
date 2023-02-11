@@ -2,7 +2,7 @@
 export async function load() {
 	try {
 		const response = await fetch(
-			'https://api.github.com/search/repositories?q=stars:%3E=500%20fork:true&sort=stars&per_page=10', {
+			'https://api.github.com/search/repositories?q=stars:%3E=500%20fork:true&sort=stars&per_page=100', {
 			method: 'GET',
 			headers: {
 				'ContentType': 'application/json'
@@ -25,8 +25,7 @@ function formatRepositories(repositories) {
 	items.forEach((element, i) => {
 		let repository = {
 			order: i + 1,
-			name: element.name,
-			author: element.owner.login,
+			name: element.full_name,
 			url: element.html_url,
 			description: element.description,
 			stars: element.stargazers_count,
