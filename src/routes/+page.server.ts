@@ -10,12 +10,10 @@ export const load = (async ({ url }) => {
 			ghUrl, {
 			method: 'GET',
 			headers: {
-				'ContentType': 'application/json'
+				'ContentType': 'application/json',
+				'User-Agent': 'gersonnoboa'
 			}
-		}
-		);
-
-		throw new Error(await response.text());
+		});
 
 		const data: GithubResponse = await response.json();
 		const repositories = formatRepositories(data);
@@ -30,7 +28,7 @@ export const load = (async ({ url }) => {
 				error: error.message
 			}
 		} else {
-			return { error: "generic error" }
+			return { error: "internal error" }
 		}
 	}
 }) satisfies PageServerLoad;
