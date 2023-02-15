@@ -1,7 +1,7 @@
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ resolve, event }) => {
-	const url = 'api.github.com';
+	const url = '*';
 	const response = await resolve(event);
 
 	if (event.request.method === 'OPTIONS') {

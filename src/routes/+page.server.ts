@@ -15,6 +15,8 @@ export const load = (async ({ url }) => {
 		}
 		);
 
+		throw new Error(await response.text());
+
 		const data: GithubResponse = await response.json();
 		const repositories = formatRepositories(data);
 
@@ -22,8 +24,14 @@ export const load = (async ({ url }) => {
 			repositories: repositories,
 			...queryParams
 		};
-	} catch (error) {
-		console.error(error);
+	} catch (error: unknown) {
+		if (error instanceof Error) {
+			return {
+				error: error.message
+			}
+		} else {
+			return { error: "generic error" }
+		}
 	}
 }) satisfies PageServerLoad;
 

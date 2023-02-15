@@ -6,7 +6,7 @@
 	import Repository from './Repository.svelte';
 
 	export let data: PageData;
-	$: ({ repositories, query, language } = data);
+	$: ({ repositories, query, language, error } = data);
 </script>
 
 <NavBar />
@@ -19,6 +19,6 @@
 			{/each}
 		</div>
 	{:else}
-		<ErrorAlert message="No results" />
+		<ErrorAlert message="No results, error={error}" />
 	{/if}
 </div>
