@@ -1,28 +1,10 @@
-<script>
-	/**
-	 * @type {string}
-	 */
-	export let order;
-	/**
-	 * @type {string}
-	 */
-	export let name;
-	/**
-	 * @type {string}
-	 */
-	export let url;
-	/**
-	 * @type {string}
-	 */
-	export let description;
-	/**
-	 * @type {string}
-	 */
-	export let stars;
-	/**
-	 * @type {string}
-	 */
-	export let language;
+<script lang="ts">
+	export let order: number;
+	export let name: string;
+	export let url: string;
+	export let description: string;
+	export let stars: number;
+	export let language: string;
 </script>
 
 <div class="card bg-base-300 shadow-md card-compact">
